@@ -11,36 +11,33 @@ permissions:
   id-token: write
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: docs/docs
     steps:
-      # Checkout repository
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
-      # Setup Node.js
       - uses: actions/setup-node@v3
         with:
-          node-version: '22'
+          node-version: 22
           cache: yarn
 
-      # Install dependencies
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
-      # Build Docusaurus website
       - name: Build website
         run: yarn build
 
-      # Optional: remove symlinks in build folder
-      - name: Remove symlinks
-        run: find build -type l -delete || true
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: build
+          path: build 
 
-      # Deploy to GitHub Pages
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
       - name: Deploy to GitHub Pages
-        id: deployment
         uses: actions/deploy-pages@v4
         with:
           artifact_name: build
