@@ -1,59 +1,46 @@
 name: Deploy to GitHub Pages
 
-
 on:
   push:
-    branches:       
-       - main
+    branches:
+      - main
 
 permissions:
-    contents: write
+  contents: write
+  pages: write
+  id-token: write
 
 jobs:
-  build:
-    name: Deploy to GitHub Pages
+  deploy:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: docs
     steps:
+      # Checkout repository
       - uses: actions/checkout@v2
+
+      # Setup Node.js
       - uses: actions/setup-node@v3
         with:
-            node-version: '22'
-            cache: yarn
+          node-version: '22'
+          cache: yarn
 
+      # Install dependencies
       - name: Install dependencies
         run: yarn install --frozen-lockfile
+
+      # Build Docusaurus website
       - name: Build website
         run: yarn build
 
-      - name: Upload Build Artifact
-        uses: actions/upload-artifact@v4
+      # Optional: remove symlinks in build folder
+      - name: Remove symlinks
+        run: find build -type l -delete || true
+
+      # Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
         with:
-            name: build
-            path: docs/build
-
-
-  deploy:
-     name: Deploy to GitHub Pages
-     needs: build
-
-     permissions:
-        pages: write
-        id-token: write
-
-     environment:
-        name: github-pages
-        url: ${{ steps.deployment.outputs.page_url }}
-    
-     runs-on: ubuntu-latest
-     steps:
-        - name: Deploy to GitHub Pages
-          uses: actions/download-artifact@v4
-          with:
-            name: build
-            path: build
-
-        - name: Deploy to GitHub Pages
-          id: deployment
-          uses: actions/deploy-pages@v4
-          with:
-            artifact_name: build
+          artifact_name: build
