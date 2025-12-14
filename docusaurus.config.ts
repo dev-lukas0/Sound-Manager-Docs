@@ -45,7 +45,7 @@ const config: Config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/dev-lukas0/Sound-Manager-Docs',
+            'https://github.com/dev-lukas0/Sound-Manager-Docs/tree/main/',
         },
         theme: {
           customCss: './src/css/custom.css',
