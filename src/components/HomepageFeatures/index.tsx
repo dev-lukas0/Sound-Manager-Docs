@@ -15,8 +15,7 @@ const FeatureList: FeatureItem[] = [
     Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        Sound-Manager was designed to be easily used and to safe you much time.
       </>
     ),
   },
@@ -25,18 +24,18 @@ const FeatureList: FeatureItem[] = [
     Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        Sound-Manager handles all the audio stuff for you. You just need
+        to focus on your game logic.
       </>
     ),
   },
   {
-    title: 'Powered by React',
+    title: 'Powered by Roblox-TS',
     Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        Sound-Manager is built with Roblox-TS, which provides a modern
+        development experience for Roblox.
       </>
     ),
   },

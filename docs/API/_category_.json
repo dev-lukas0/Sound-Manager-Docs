@@ -1,6 +1,6 @@
 {
-  "label": "Sound-Category",
-  "position": 3,
+  "label": "API",
+  "position": 2,
   "link": {
     "type": "generated-index",
     "description": "API Reference for Sound Manager"
