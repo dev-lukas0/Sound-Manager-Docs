@@ -30,12 +30,13 @@ const FeatureList: FeatureItem[] = [
     ),
   },
   {
-    title: 'Powered by Roblox-TS',
+    title: 'Features',
     Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
     description: (
       <>
-        Sound-Manager is built with Roblox-TS, which provides a modern
-        development experience for Roblox.
+        - Autocompletion for Sounds, SoundGroups
+        - Easy to use and implement
+        - Saves a lot of development time
       </>
     ),
   },
